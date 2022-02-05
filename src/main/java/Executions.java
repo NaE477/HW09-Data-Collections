@@ -1,4 +1,3 @@
-import classes.HashMapClass;
 import classes.LetterMover;
 import classes.Utilities;
 
@@ -9,26 +8,49 @@ public class Executions {
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
+        label:
         while (true) {
             Utilities.printGreen("""
                     Welcome to HW09.
                     What are you going to do:
-                    1-Check variant letters of a word
+                    1-Check variant letters of a word(basic)
+                    2-Check variant letters of a word(advanced)
                     0-Exit
                     """,1000);
             System.out.print("      Option: ");
             String opt = sc.nextLine();
-            if (opt.equals("1")) {
-                letterMover();
-            }
-
-            else if(opt.equals("0")){
-                break;
+            switch (opt) {
+                case "1":
+                    basicWordVariant();
+                    break;
+                case "2":
+                    advancedWordVariant();
+                    break;
+                case "0":
+                    break label;
             }
         }
     }
 
-    public static void letterMover(){
+    public static void basicWordVariant(){
+        LetterMover letterMover = new LetterMover();
+        System.out.print("      Statement: ");
+        String input = sc.nextLine();
+        if(input.split(" ").length == 1){
+            System.out.println("           ---------------------------------");
+            letterMover.getVariants(input).forEach((key, value) ->{
+                System.out.print("           ");
+                Utilities.printGreen(key,250);
+            });
+            System.out.println("           ---------------------------------");
+        } else if(input.split(" ").length == 2){
+            if(letterMover.getVariants(input.split(" ")[0]).containsKey(input.split(" ")[0])){
+                Utilities.printGreen("           Pass",800);
+            } else Utilities.printRed("           Fail",800);
+        } else Utilities.printRed("Only one word or two words split with a space are allowed here.",1000);
+    }
+
+    public static void advancedWordVariant(){
         LetterMover letterMover = new LetterMover();
         label:
         while(true) {
