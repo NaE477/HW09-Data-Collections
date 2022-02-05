@@ -17,4 +17,13 @@ public class Utilities {
             e.printStackTrace();
         }
     }
+    public static Integer intReceiver(String input){
+        while (true){
+            try {
+                return Integer.parseInt(input);
+            } catch (NumberFormatException e){
+                printRed("Only numbers!",0);
+            }
+        }
+    }
 }

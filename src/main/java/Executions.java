@@ -1,4 +1,5 @@
 import classes.LetterMover;
+import classes.OrderedPairs;
 import classes.Utilities;
 import classes.WordFiller;
 
@@ -12,11 +13,14 @@ public class Executions {
         label:
         while (true) {
             Utilities.printGreen("""
+                    
                     Welcome to HW09.
                     What are you going to do:
                     1-Variant Words(basic)
                     2-Variant Words(advanced)
                     3-The TreeSets
+                    4-Ordered Pairs(basic)
+                    5-Ordered Pairs(advanced)
                     0-Exit
                     """,1000);
             System.out.print("      Option: ");
@@ -31,8 +35,16 @@ public class Executions {
                 case "3":
                     treeSets();
                     break;
+                case "4":
+                    basicOrderedPairs();
+                    break;
+                case "5":
+                    advancedOrderedPairs();
+                    break;
                 case "0":
                     break label;
+                default:
+                    Utilities.printRed("Wrong Option", 100);
             }
         }
     }
@@ -137,9 +149,66 @@ public class Executions {
             }
         }
     }
+
     private static void iterateThroughOneCharSet(Set<Character> set,Integer time){
         for (Character c : set) {
             Utilities.printGreen("                " + c.toString(), time);
         }
     }
+
+    public static void basicOrderedPairs(){
+        OrderedPairs orderedPairs = new OrderedPairs();
+        ArrayList<Double> test = new ArrayList<>();
+        test.add(3d);
+        test.add(7d);
+        test.add(9d);
+        test.add(2d);
+        test.add(5d);
+        test.add(5d);
+        test.add(8d);
+        test.add(5d);
+        test.add(6d);
+        test.add(3d);
+        test.add(4d);
+        test.add(7d);
+        test.add(3d);
+        test.add(1d);
+        System.out.print("Original list: {");
+        for(Double d: test){
+            System.out.print(d + ",");
+        }
+        System.out.println("}");
+        ArrayList<Double> arrayList = orderedPairs.unorderedPairDeleter(test);
+        System.out.print("Manipulated list: ");
+        for(Double d : arrayList){
+            System.out.print(d + " ");
+        }
+    }
+
+    public static void advancedOrderedPairs(){
+        OrderedPairs orderedPairs = new OrderedPairs();
+        ArrayList<Double> inputs = new ArrayList<>();
+        System.out.println("Enter 'e' to Stop receiving number:");
+        while (true) {
+            String input = sc.nextLine();
+            if(!input.equals("e")){
+                try{
+                    inputs.add(Double.parseDouble(input));
+                } catch (NumberFormatException e){
+                    System.out.println("Only e or numbers are allowed here.");
+                }
+            } else break;
+        }
+        System.out.print("Your Original list: {");
+        for(Double d: inputs){
+            System.out.print(d + ",");
+        }
+        System.out.println("}");
+        ArrayList<Double> arrayList = orderedPairs.unorderedPairDeleter(inputs);
+        System.out.print("Manipulated list: ");
+        for(Double d : arrayList){
+            System.out.print(d + " ");
+        }
+    }
+
 }
