@@ -1,5 +1,6 @@
 package classes;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LetterMover {
@@ -14,7 +15,7 @@ public class LetterMover {
         for(int i = 0; i < inputWord.length();i++){
             for(int j = inputWord.length() -1; j >= 0; j--) {
                 output.put(swap(inputWord, i, j),inputWord);
-                output.put(swap(reverser(inputWord),j,i),inputWord);
+                output.put(swap(reverse(inputWord),j,i),inputWord);
             }
         }
         return output;
@@ -43,7 +44,7 @@ public class LetterMover {
      * @param str to be reversed
      * @return reversed form of given string
      */
-    public String reverser(String str){
+    public String reverse(String str){
         StringBuilder output = new StringBuilder();
         for(int i = str.length(); i > 0; i--){
             output.append(str.charAt(i - 1));
