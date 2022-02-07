@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class OrderedPairs<T extends Number> implements Comparator<Number> {
+public class OrderedPairs<T extends Number & Comparable<T>> implements Comparator<Number> {
 
     public ArrayList<T> unorderedPairDeleter(ArrayList<T> input) {
         if (input.size() != 0) {

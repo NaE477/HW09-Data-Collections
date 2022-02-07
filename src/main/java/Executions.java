@@ -1,7 +1,4 @@
-import classes.LetterMover;
-import classes.OrderedPairs;
-import classes.Utilities;
-import classes.WordFiller;
+import classes.*;
 
 import java.util.*;
 
@@ -9,6 +6,18 @@ public class Executions {
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
+
+        HashMapClass<String,String> testMap = new HashMapClass<>();
+        testMap.put(String.valueOf(5),String.valueOf(7));
+        for(int i = 0; i < 100; i++){
+            testMap.put(String.valueOf(i),String.valueOf(i));
+        }
+        testMap.replace("1", "5","1");
+        System.out.println(testMap.get("1"));
+
+        for(HashMapClass<String,String> maps: testMap.wholeMapSet()){
+            System.out.println(maps);
+        }
 
         label:
         while (true) {
