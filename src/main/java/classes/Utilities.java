@@ -5,6 +5,21 @@ import java.util.Map;
 import java.util.Set;
 
 public class Utilities {
+
+    public static void menuViewer(String...options){
+        System.out.println("\033[0;32m" + "           ----------------------------------------------");
+        for(String opt : options){
+            System.out.println("           |" + opt);
+        }
+        System.out.println("           ----------------------------------------------" + "\033[0m");
+        System.out.print("           Option: ");
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void printGreen(String input,Integer pauseTime){
         try {
             System.out.println( "\033[0;32m" + input + "\033[0m");
@@ -25,7 +40,7 @@ public class Utilities {
 
     public static void iterateThroughCharSet(Set<Character> set, Integer time){
         for (Character c : set) {
-            System.out.print("\033[0;32m" + "          " + c.toString() + "  " + "\033[0m");
+            System.out.print("\033[0;32m" + "           " + c.toString() + "  " + "\033[0m");
         }
         System.out.println();
     }

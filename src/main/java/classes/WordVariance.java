@@ -1,19 +1,18 @@
 package classes;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
-public class LetterMover {
+public class WordVariance {
 
     /**
      * @param inputWord word to get variants of
      * @return all the variants of letter position changing in a word. using two other methods.
      */
-    public HashMap<String,String> getVariants(String inputWord){
+    public HashMap<String,String> getVariants(String inputWord) {
         HashMap<String ,String> output = new java.util.HashMap<>();
 
         for(int i = 0; i < inputWord.length();i++){
-            for(int j = inputWord.length() -1; j >= 0; j--) {
+            for(int j = inputWord.length() - 1; j >= 0; j--) {
                 output.put(swap(inputWord, i, j),inputWord);
                 output.put(swap(reverse(inputWord),j,i),inputWord);
             }
