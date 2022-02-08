@@ -73,6 +73,7 @@ public class Executions {
     }
 
     //1-
+    // One/Two Input,Assignment-like method
     public static void basicWordVariant(){
         WordVariance wordVariance = new WordVariance();
         System.out.print("           Statement: ");
@@ -91,7 +92,7 @@ public class Executions {
             } else Utilities.printRed("           Fail",800);
         } else Utilities.printRed("Only one word or two words split with a space are allowed here.",1000);
     }
-
+    // Infinite-input,while-based method
     public static void advancedWordVariant(){
         WordVariance wordVariance = new WordVariance();
         label:
@@ -141,8 +142,8 @@ public class Executions {
         WordFiller wordFiller = new WordFiller();
         TreeSet<Character> firstTree = wordFiller.randomFiller(10);
         TreeSet<Character> secondTree = wordFiller.randomFiller(10);
-        TreeSet<Character> intersections = wordFiller.intersection(firstTree,secondTree);
         TreeSet<Character> unions = wordFiller.unionize(firstTree,secondTree);
+        TreeSet<Character> intersections = wordFiller.intersection(firstTree,secondTree);
         label:
         while (true) {
             String one = "1-View Intersections";
@@ -176,6 +177,7 @@ public class Executions {
     }
 
     //3-
+    // Zero-input,Assignment-like method
     public static void basicOrderedPairs(){
         OrderedPairs<Integer> orderedPairs = new OrderedPairs<>();
         ArrayList<Integer> test = new ArrayList<>();
@@ -198,44 +200,30 @@ public class Executions {
             System.out.print(n + ",");
         }
         System.out.println("}");
-        ArrayList<Integer> arrayList = orderedPairs.unorderedPairDeleter(test);
+        ArrayList<Integer> arrayList = orderedPairs.arrangePairs(test);
         System.out.print("           Manipulated list: ");
         for(Number n : arrayList){
             System.out.print(n + " ");
         }
         System.out.println();
     }
-
+    // Infinite-input,While-based,optional method
     public static void advancedOrderedPairs(){
         OrderedPairs<Integer> orderedPairs = new OrderedPairs<>();
         ArrayList<Integer> inputs = new ArrayList<>();
         System.out.println("           Enter 'e' to Stop receiving number:");
-        int count = 1;
-        while (true) {
-            System.out.print("           " + count + ": ");
-            String input = sc.nextLine();
-            if(!input.equals("e")){
-                try{
-                    inputs.add(Integer.parseInt(input));
-                    count++;
-                } catch (NumberFormatException e){
-                    Utilities.printRed("           Only e or numbers are allowed here.",250);
-                }
-            } else break;
-        }
+        Utilities.listIntReceiver(inputs);
         Utilities.printGreen("           Your Original list: ",500);
-        System.out.print("           {");
-        for(Number n: inputs){
-            System.out.print(n + ",");
+        Utilities.iterateThroughNumList(inputs);
+        ArrayList<Integer> orderedList;
+        try {
+            orderedList = orderedPairs.arrangePairs(inputs);
+        } catch (ArrayIndexOutOfBoundsException e){
+            Utilities.printRed("           Empty input.",500);
+            return;
         }
-        System.out.println("}");
-        ArrayList<Integer> arrayList = orderedPairs.unorderedPairDeleter(inputs);
         Utilities.printGreen("           Pair ordered list: ",500);
-        System.out.print("           {");
-        for(Number n : arrayList){
-            System.out.print(n + ",");
-        }
-        System.out.println("}");
+        Utilities.iterateThroughNumList(orderedList);
     }
 
 }
