@@ -87,7 +87,7 @@ public class Executions {
             });
             System.out.println("           ---------------------------------");
         } else if(input.split(" ").length == 2){
-            if(wordVariance.getVariants(input.split(" ")[0]).containsKey(input.split(" ")[0])){
+            if(wordVariance.getVariants(input.split(" ")[0]).containsKey(input.split(" ")[1])){
                 Utilities.printGreen("           Pass",800);
             } else Utilities.printRed("           Fail",800);
         } else Utilities.printRed("Only one word or two words split with a space are allowed here.",1000);
